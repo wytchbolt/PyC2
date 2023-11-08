@@ -2,10 +2,13 @@ from PIL import Image
 import os
 
 directory = r'DIRECTORY_PATH'
-# Change 'DIRECTORY_PATH' to the path of the folder with uncropped images and PyC2.py
+# Change 'DIRECTORY_PATH' to the path of the folder with original images and PyC2.py
+extension = "FILE_EXTENSION"
+# Change "FILE_EXTENSION" to the extension used in your images
+# EG ".png"
 
 for filename in os.listdir(directory):
-    if filename.endswith(".png"):
+    if filename.endswith(extension):
         img = Image.open(filename)
         name = (filename)
         cropped = img.crop((L,T,R,B))
@@ -17,11 +20,12 @@ for filename in os.listdir(directory):
     else:
         continue
 for filename in os.listdir(directory):
-    if filename.endswith(".png"):
+    if filename.endswith(extension):
         img = Image.open(filename)
         img = img.convert("RGB")
         img.save(filename, "JPEG", optimize=True, quality=80)
         # Quality is set to 80 by default
+        # Change `optimize=True` to `optimize=False` to disable
         print(os.path.join(directory, filename))
         continue
     else:
