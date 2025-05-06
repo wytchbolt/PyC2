@@ -12,7 +12,7 @@ for filename in os.listdir(directory):
         img = Image.open(filename)
         name = (filename)
         cropped = img.crop((L,T,R,B))
-        # Chance 'L,T,R,B' to crop dimensions
+        # Change 'L,T,R,B' to crop dimensions
         # EG '0,90,2880,1710'
         cropped.save(name)
         print(os.path.join(directory, filename))
